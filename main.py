@@ -3,7 +3,7 @@ from datetime import datetime
 
 from database import SessionLocal, engine
 from models import Base, Task
-from schedular import start_scheduler, schedule_task
+from schedular import start_scheduler
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -43,4 +43,5 @@ def get_tasks():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
