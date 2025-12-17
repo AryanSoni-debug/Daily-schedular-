@@ -3,7 +3,7 @@ from datetime import datetime
 
 from database import SessionLocal, engine
 from models import Base, Task
-from scheduler import start_scheduler, schedule_task
+from schedular import start_scheduler, schedule_task
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -28,8 +28,6 @@ def add_task():
     db.commit()
     db.close()
 
-    schedule_task(task.title, task.reminder_time)
-
     return jsonify({"message": "Task scheduled"}), 200
 
 @app.get("/tasks")
@@ -45,3 +43,4 @@ def get_tasks():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
